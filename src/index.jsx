@@ -1,14 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import AppState from './AppState';
+import TodoStore from './TodoStore';
 import App from './App';
 
-const appState = new AppState();
+
+const todoStore = new TodoStore();
 
 render(
   <AppContainer>
-    <App appState={appState} />
+    <App store={todoStore} />
   </AppContainer>,
   document.getElementById('root')
 );
@@ -19,7 +20,7 @@ if (module.hot) {
 
     render(
       <AppContainer>
-        <NextApp appState={appState} />
+        <NextApp store={todoStore} />
       </AppContainer>,
       document.getElementById('root')
     );
