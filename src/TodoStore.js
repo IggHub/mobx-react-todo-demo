@@ -35,11 +35,13 @@ class TodoStore {
     console.log(this.todos[index].completed);
   };
   @action setFilterToCompleted(){
-    //this.todoFilter = newFilter;
-    //console.log(this.todoFilter + "before");
     this.todoFilter = 'completed';
-    console.log(this.todoFilter + " after");
+    console.log("todoFilter: " + this.todoFilter);
   };
+  @action setFilterToAll(){
+    this.todoFilter = 'all';
+    console.log("todoFilter: " + this.todoFilter);
+  }
 
   @action filterCompletedTodos(){
     return this.todos.filter((todo) => {

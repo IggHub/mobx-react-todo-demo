@@ -5,9 +5,7 @@ import DevTools from 'mobx-react-devtools';
 //import './App.css';
 
 const styles = {
-  listStyle: {
-    listStyleType: 'none'
-  }
+  listStyle: {listStyleType: 'none'}
 }
 
 @observer
@@ -34,7 +32,7 @@ class App extends Component {
         <h4>You have {this.props.store.completedTodoLength} completed Todos</h4>
 
         <ul style={styles.listStyle}>
-          {todos.map((todo, index) => {
+          {this.getCompletedTodos().map((todo, index) => {
             return <TodoList todo={todo} index={index} key={todo.id} store={this.props.store} />
             }
           )}
@@ -42,7 +40,10 @@ class App extends Component {
 
         <input value={this.input} onChange={this.handleNewTodo} /><button onClick={this.addTodo}>Add</button>
         <div>
-          <button onClick={() => this.props.store.setFilterToCompleted()}>Show Completed</button>
+          {this.props.store.todoFilter === 'all' ?
+            <button onClick={() => this.props.store.setFilterToCompleted()}>Show Completed</button> :
+            <button onClick={() => this.props.store.setFilterToAll()}>Show All</button>
+          }
           <button>Delete All Completed</button>
         </div>
         <DevTools />
@@ -60,7 +61,6 @@ class App extends Component {
   @action handleFilter = () => {
     this.props.store.setFilterToCompleted('completed');
   };
-
   @action getCompletedTodos = () => {
     return this.props.store.todos.filter((todo) => {
       switch (this.props.store.todoFilter) {
