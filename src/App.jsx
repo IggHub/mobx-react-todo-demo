@@ -44,7 +44,7 @@ class App extends Component {
             <button onClick={() => this.props.store.setFilterToCompleted()}>Show Completed</button> :
             <button onClick={() => this.props.store.setFilterToAll()}>Show All</button>
           }
-          <button>Delete All Completed</button>
+          <button onClick={() => this.props.store.deleteAllCompleted()}>Delete All Completed</button>
         </div>
         <DevTools />
       </div>

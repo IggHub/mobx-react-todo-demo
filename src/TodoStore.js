@@ -41,20 +41,12 @@ class TodoStore {
   @action setFilterToAll(){
     this.todoFilter = 'all';
     console.log("todoFilter: " + this.todoFilter);
-  }
-
-  @action filterCompletedTodos(){
-    return this.todos.filter((todo) => {
-      switch (this.todoFilter){
-          case 'completed':
-            return todo.completed;
-          case 'active':
-            return !todo.completed;
-          default:
-            return true;
-          }
-    })
-  }
+  };
+  @action deleteAllCompleted(){
+    this.todos = this.todos.filter((todo) => {
+      return !todo.completed
+    });
+  };
 }
 
 export default TodoStore;
