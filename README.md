@@ -3,7 +3,7 @@ mobx-react Todo demo
 
 Study to learn [MobX](https://mobxjs.github.io/mobx) with [React](https://facebook.github.io/react).
 
-![demo](/assets/images/mobx-react-demo.gif)
+![demo](/assets/images/mobx-react-todo-demo.gif)
 
 ### Run it:
 
